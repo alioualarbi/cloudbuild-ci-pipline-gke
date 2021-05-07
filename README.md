@@ -1,4 +1,4 @@
-# Simple GCB to GKE CICD Pipeline Codelab
+# Simple Google CloudBuild to GKE CICD Pipeline
 
 ## Setup
 
