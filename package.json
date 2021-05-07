@@ -1,0 +1,25 @@
+{
+  "name": "gcb-gke-codelab",
+  "version": "0.0.0",
+  "description": "Simple Google Cloud Build to GKE CICD Pipeline Codelab",
+  "main": "app/app.js",
+  "scripts": {
+    "start": "node app/app.js",
+    "test": "node_modules/.bin/mocha -u exports test/unit/* && node_modules/.bin/mocha -u exports test/integration/*",
+    "test-unit": "node_modules/.bin/mocha -u exports test/unit/*",
+    "test-integration": "node_modules/.bin/mocha -u exports test/integration/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alioualarbi/cloudbuild-pipline--gke"
+  },
+  "author": "alioualarbi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "supertest": "^2.0.1"
+  }
+}
