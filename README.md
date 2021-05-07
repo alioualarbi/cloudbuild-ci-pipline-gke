@@ -110,7 +110,7 @@ The project is setup at this point. Now what???
 APP_NAME=my-app
 ```
 
-### Create k8s Resources
+### Create gke Resources
 
 _Wait for cluster to be running to execute this section_
 
@@ -120,20 +120,20 @@ gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${COMPUTE_ZONE}
 ```
 
 ```
-mkdir k8s
+mkdir gke
 ```
 Create a Deployment file
 ```
-kubectl run ${APP_NAME} --image=gcr.io/${PROJECT_NAME}/${APP_NAME} --port=3000 --env="GET_HOSTS_FROM=dns" --labels="app=${APP_NAME}" --dry-run -o yaml > k8s/deployment.yaml
+kubectl run ${APP_NAME} --image=gcr.io/${PROJECT_NAME}/${APP_NAME} --port=3000 --env="GET_HOSTS_FROM=dns" --labels="app=${APP_NAME}" --dry-run -o yaml > gke/deployment.yaml
 ```
 
 Create a Service file
 ```
-kubectl create service loadbalancer ${APP_NAME} --tcp=80:3000 --dry-run -o yaml > k8s/service.yaml
+kubectl create service loadbalancer ${APP_NAME} --tcp=80:3000 --dry-run -o yaml > gke/service.yaml
 ```
 Create Service and Deployment resources
 ```
-kubectl apply -f k8s/
+kubectl apply -f gke/
 ```
 
 ### Create a build pipeline config file
@@ -189,11 +189,11 @@ Patch Deployment manifest file:
       EOF
 
       kubectl patch --local -o yaml \
-        -f k8s/deployment.yaml \
+        -f gke/deployment.yaml \
         -p "$(cat patch.yaml)" \
         > deployment.yaml
 
-      mv deployment.yaml k8s/deployment.yaml
+      mv deployment.yaml gke/deployment.yaml
 ```
 
 Apply change to the GKE cluster:
@@ -201,7 +201,7 @@ Apply change to the GKE cluster:
 # Apply change
 - id: 'Apply update to cluster'
   name: 'gcr.io/cloud-builders/kubectl'
-  args: [ 'apply', '-f', 'k8s/']
+  args: [ 'apply', '-f', 'gke/']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
@@ -260,7 +260,7 @@ Follow prompts to OAuth into GitHub and select your repo.
 
 Create trigger with following:
 
-| Field                 | Value        |
+| Field                  | Value        |
 | -------------          |-------------|
 | Name                   | Deploy on push to master |
 | Trigger type           | branch      |
