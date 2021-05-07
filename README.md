@@ -22,8 +22,8 @@ Next, clone your fork of the repository:
 USERNAME=<GITHUB_USERNAME>
 ```
 ```
-git clone https://github.com/${USERNAME}/gcb-gke-codelab.git
-cd gcb-gke-codelab
+git clone https://github.com/${USERNAME}/cloudbuild-pipline--gke.git
+cd cloudbuild-pipline--gke
 ```
 
 ### Create a GCP project
