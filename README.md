@@ -220,7 +220,7 @@ _Save the file_
 
 Manually trigger a build from the CLI
 ```
-gcloud container builds submit . \
+gcloud builds submit . \
     --config cloudbuild.yaml \
     --substitutions \
         _APP_NAME=${APP_NAME},_CLOUDSDK_COMPUTE_ZONE=${COMPUTE_ZONE},_CLOUDSDK_CONTAINER_CLUSTER=${CLUSTER_NAME},SHORT_SHA=xxx
