@@ -227,7 +227,7 @@ Manually trigger a build from the CLI
 gcloud builds submit . \
     --config cloudbuild.yaml \
     --substitutions \
-        _APP_NAME=${APP_NAME},_CLOUDSDK_COMPUTE_ZONE=${COMPUTE_ZONE},_CLOUDSDK_CONTAINER_CLUSTER=${CLUSTER_NAME},SHORT_SHA=xxx
+        _APP_NAME=${APP_NAME},_CLOUDSDK_COMPUTE_ZONE=${COMPUTE_ZONE},_CLOUDSDK_CONTAINER_CLUSTER=${CLUSTER_NAME},SHORT_SHA=latest
 ```
 
 ### Get the app url
