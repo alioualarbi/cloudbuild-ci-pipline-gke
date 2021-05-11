@@ -36,7 +36,7 @@ steps:
         -p "$(cat patch.yaml)" \
         > deployment.yaml
       
-      mv deployment.yaml k8s/deployment.yaml
+      mv deployment.yaml gke/deployment.yaml
 
 # Apply change
 - id: 'Apply update to cluster'

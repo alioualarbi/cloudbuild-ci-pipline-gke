@@ -30,7 +30,7 @@ cd cloudbuild-pipline--gke
 
 Create a new GCP project and capture the projectId in the PROJECT_ID env var:
 ```
-PROJECT_NAME=gke-pipeline-${USERNAME}
+PROJECT_NAME=<YOU Project Name>
 ```
 ```
 PROJECT_ID=$(gcloud projects create --name "${PROJECT_NAME}" --format='value(projectId)')
@@ -77,6 +77,10 @@ gcloud services enable --async \
 ```
 _Use `gcloud services list --enabled` to check progress_
 
+### Build the Dockerfile
+```
+docker build -t gcr.io/$PROJECT_NAME/$APP_NAME .
+```
 ### Create a GKE cluster
 
 Create the cluster:
@@ -220,10 +224,10 @@ _Save the file_
 
 Manually trigger a build from the CLI
 ```
-gcloud container builds submit . \
+gcloud builds submit . \
     --config cloudbuild.yaml \
     --substitutions \
-        _APP_NAME=${APP_NAME},_CLOUDSDK_COMPUTE_ZONE=${COMPUTE_ZONE},_CLOUDSDK_CONTAINER_CLUSTER=${CLUSTER_NAME},SHORT_SHA=xxx
+        _APP_NAME=${APP_NAME},_CLOUDSDK_COMPUTE_ZONE=${COMPUTE_ZONE},_CLOUDSDK_CONTAINER_CLUSTER=${CLUSTER_NAME},SHORT_SHA=latest
 ```
 
 ### Get the app url
