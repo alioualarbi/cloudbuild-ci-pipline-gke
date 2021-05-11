@@ -1,3 +1,3 @@
 module.exports = () => {
-    return 'New version of Hello word'
+    return 'New version 2  of Hello word'
 }
