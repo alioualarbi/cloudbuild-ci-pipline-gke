@@ -108,6 +108,7 @@ The project is setup at this point. Now what???
 
 ```
 APP_NAME=my-app
+TAG=latest
 ```
 
 ### Create gke Resources
@@ -124,7 +125,7 @@ mkdir gke
 ```
 Create a Deployment file
 ```
-kubectl run ${APP_NAME} --image=gcr.io/${PROJECT_NAME}/${APP_NAME}:latest --port=3000 --env="GET_HOSTS_FROM=dns" --labels="app=${APP_NAME}" --dry-run -o yaml > gke/deployment.yaml
+kubectl run ${APP_NAME} --image=gcr.io/${PROJECT_NAME}/${APP_NAME}:${TAG} --port=3000 --env="GET_HOSTS_FROM=dns" --labels="app=${APP_NAME}" --dry-run -o yaml > gke/deployment.yaml
 ```
 
 Create a Service file
