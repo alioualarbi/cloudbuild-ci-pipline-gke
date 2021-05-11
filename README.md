@@ -77,6 +77,10 @@ gcloud services enable --async \
 ```
 _Use `gcloud services list --enabled` to check progress_
 
+### Build the Dockerfile
+```
+docker build -t gcr.io/$PROJECT_NAME/$APP_NAME .
+```
 ### Create a GKE cluster
 
 Create the cluster:
