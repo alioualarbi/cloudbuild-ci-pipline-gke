@@ -30,7 +30,7 @@ cd cloudbuild-pipline--gke
 
 Create a new GCP project and capture the projectId in the PROJECT_ID env var:
 ```
-PROJECT_NAME=gke-pipeline-${USERNAME}
+PROJECT_NAME=<YOU Project Name>
 ```
 ```
 PROJECT_ID=$(gcloud projects create --name "${PROJECT_NAME}" --format='value(projectId)')
