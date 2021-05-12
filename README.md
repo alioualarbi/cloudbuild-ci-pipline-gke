@@ -1,4 +1,4 @@
-# Simple Google CloudBuild to GKE CICD Pipeline
+# Simple Google CloudBuild to GKE CI Pipeline
 
 ## Setup
 
