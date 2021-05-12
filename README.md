@@ -22,7 +22,7 @@ Next, clone your fork of the repository:
 USERNAME=<GITHUB_USERNAME>
 ```
 ```
-git clone https://github.com/${USERNAME}/cloudbuild-pipline--gke.git
+git clone https://github.com/${USERNAME}/cloudbuild-ci-pipline-gke.git
 cd cloudbuild-pipline--gke
 ```
 
@@ -312,17 +312,3 @@ For a more real-world pipeline, see this [pipeline tutorial](https://github.com/
 - Separate infrastructure manifest files from application code
 - Use PRs as manual gates for promoting changes to prod without rebuilding
 - See Kelsey Hightower's production-ready [pipeline tutorial](https://github.com/kelseyhightower/pipeline) for an example of these and other best practices
-
-## Cleanup
-Delete the GCP Project:
-```
-gcloud projects delete ${PROJECT_ID}
-```
-
-Delete the GitHub repo
-```
-REPO=gcb-gke-codelab
-```
-```
-curl -X DELETE "https://api.github.com/repos/${USERNAME}/${repo}"
-```
